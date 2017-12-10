@@ -8,6 +8,7 @@ import com.google.common.primitives.Ints;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -17,8 +18,7 @@ import java.util.Set;
 public class TestArrayList {
 
     public static void main(String[] args) {
-        testArrayList();
-        testLists();
+        testIterator();
     }
 
     private static void testLists() {
@@ -36,6 +36,19 @@ public class TestArrayList {
         for (int i = 0; i < 3; i++) {
             Object o = partition.get(i);
         }
+    }
+
+    private static void testIterator() {
+        List target = new ArrayList();
+        target.add(1);
+        target.add(2);
+        target.add(3);
+        target.add(4);
+        target.add(5);
+
+        Iterator iterator = target.iterator();
+        boolean b = iterator.hasNext();
+        Object next = iterator.next();
     }
 
     private static void testArrayList() {
