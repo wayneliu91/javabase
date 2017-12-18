@@ -11,33 +11,26 @@ import java.util.List;
  */
 public class TestJoiner {
     public static void main(String[] args) {
-        testSkipNulls();
+        String s = testSkipNulls();
+        System.out.println(s);
     }
 
-    private static String testAppendTo() throws IOException {
-        Joiner joiner = Joiner.on(";");
-//        StringBuilder ab = new StringBuilder("start: ");
-        StringBuffer ab = new StringBuffer("start: ");
+    private static String testAppendTo() {
+        StringBuilder ab = new StringBuilder("start: ");
         List list = Lists.newArrayList(1, 2, 3);
-        StringBuffer appendTo = joiner.appendTo(ab, list);
-        String toString = appendTo.toString();
-        return toString;
+        StringBuilder joiner = Joiner.on(",").appendTo(ab, list);
+        return joiner.toString();
     }
+
 
     private static String testSkipNulls() {
-        Joiner joiner = Joiner.on(' ');
-        Joiner joiner1 = joiner.skipNulls();
-        String join = joiner1.join(new Integer[]{null, 2, null, 4});
-        return join;
+        Joiner joiner = Joiner.on(',').skipNulls();
+        return joiner.join(new Integer[]{null, 2, null, 4});
     }
 
     private static String testUseForNull() {
-        Joiner joiner = Joiner.on(' ');
-        Joiner joiner1 = joiner.useForNull("None");
-        String join1 = joiner1.join(1, null, 3);
-        String toString = join1.toString();
-        System.out.println(toString);
-        return join1;
+        Joiner joiner = Joiner.on(',').useForNull("None");
+        return joiner.join(1, null, 3);
     }
 
 
