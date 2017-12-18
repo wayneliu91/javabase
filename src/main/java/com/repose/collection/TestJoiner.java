@@ -3,7 +3,6 @@ package com.repose.collection;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,7 +21,6 @@ public class TestJoiner {
         return joiner.toString();
     }
 
-
     private static String testSkipNulls() {
         Joiner joiner = Joiner.on(',').skipNulls();
         return joiner.join(new Integer[]{null, 2, null, 4});
@@ -32,6 +30,5 @@ public class TestJoiner {
         Joiner joiner = Joiner.on(',').useForNull("None");
         return joiner.join(1, null, 3);
     }
-
 
 }
