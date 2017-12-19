@@ -1,42 +1,43 @@
 package com.repose.guava.basicutilities;
 
-
 import com.google.common.base.Optional;
 
 import java.util.Set;
 
+/**
+ * @author 11629
+ */
 public class TestOptional {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         test();
     }
 
     private static void test() {
         Integer value1 = null;
         Integer value2 = new Integer(10);
-        //Optional.fromNullable - allows passed parameter to be null.
+        // Optional.fromNullable - allows passed parameter to be null.
         Optional<Integer> a = Optional.fromNullable(value1);
-        //Optional.of - throws NullPointerException if passed parameter is null
+        // Optional.of - throws NullPointerException if passed parameter is null
         Optional<Integer> b = Optional.of(value2);
 
         System.out.println(sum(a, b));
     }
 
     private static Integer sum(Optional<Integer> a, Optional<Integer> b) {
-        //Optional.isPresent - checks the value is present or not
+        // Optional.isPresent - checks the value is present or not
         System.out.println("First parameter is present: " + a.isPresent());
         System.out.println("Second parameter is present: " + b.isPresent());
 
-        //Optional.or - returns the value if present otherwise returns
-        //the default value passed.
+        // Optional.or - returns the value if present otherwise returns
+        // the default value passed.
         Integer value1 = a.or(new Integer(0));
 
-        //Optional.get - gets the value, value should be present
+        // Optional.get - gets the value, value should be present
         Integer value2 = b.get();
 
         return value1 + value2;
     }
-
 
     public static void testMethodReturn() {
         Optional<Long> value = method();
@@ -46,7 +47,6 @@ public class TestOptional {
             System.out.println("获得返回值: " + value.or(-12L));
         }
         System.out.println("获得返回值 orNull: " + value.orNull());
-
 
         Optional<Long> valueNoNull = methodNoNull();
         if (valueNoNull.isPresent() == true) {
@@ -67,7 +67,7 @@ public class TestOptional {
         return Optional.fromNullable(15L);
     }
 
-    private static void testOptional1() throws Exception {
+    private static void testOptional1() {
         Optional<Integer> possible = Optional.of(6);
         Optional<Integer> absentOpt = Optional.absent();
         Optional<Integer> NullableOpt = Optional.fromNullable(null);
@@ -90,7 +90,7 @@ public class TestOptional {
         }
     }
 
-    private static void testOptional() throws Exception {
+    private static void testOptional() {
         Optional<Integer> possible = Optional.of(6);
         if (possible.isPresent()) {
             System.out.println("possible isPresent:" + possible.isPresent());

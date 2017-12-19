@@ -3,8 +3,12 @@ package com.repose.guava.basicutilities;
 import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * @author 11629
+ */
 public class TestPreconditions {
-    public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) {
 
         getPerson(8, "peida");
 
@@ -14,35 +18,35 @@ public class TestPreconditions {
 
         getPerson(8, null);
 
-        getPersonByPrecondition(8,"peida");
+        getPersonByPrecondition(8, "peida");
 
         try {
-            getPersonByPrecondition(-9,"peida");
+            getPersonByPrecondition(-9, "peida");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            getPersonByPrecondition(8,"");
+            getPersonByPrecondition(8, "");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            getPersonByPrecondition(8,null);
+            getPersonByPrecondition(8, null);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static void getPersonByPrecondition(int age,String name)throws Exception{
+    private static void getPersonByPrecondition(int age, String name) {
         Preconditions.checkNotNull(name, "name为null");
-        Preconditions.checkArgument(name.length()>0, "name为\'\'");
-        Preconditions.checkArgument(age>0, "age 必须大于0");
-        System.out.println("a person age:"+age+",name:"+name);
+        Preconditions.checkArgument(name.length() > 0, "name为\'\'");
+        Preconditions.checkArgument(age > 0, "age 必须大于0");
+        System.out.println("a person age:" + age + ",name:" + name);
     }
 
-    private static void getPerson(int age, String name) throws Exception {
+    private static void getPerson(int age, String name) {
         if (age > 0 && name != null && StringUtils.isNoneBlank(name)) {
             System.out.println("a person age:" + age + ",name:" + name);
         } else {
