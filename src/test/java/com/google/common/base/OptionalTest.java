@@ -29,4 +29,9 @@ public class OptionalTest {
         System.out.println("of方法测试：值:" + possible.get());
     }
 
+    @Test
+    public void fromNullable() {
+        Optional<String> name = Optional.fromNullable(null);
+        System.out.println(name.or("Jim"));
+    }
 }
