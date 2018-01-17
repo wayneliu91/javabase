@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class PasswordUtils {
 
-    @UseCase(id = 47, description = "Passwords must contain at least one numeric")
+    @UseCase(id = 47, description = "密码至少包含一个数字")
     public boolean validatePassword(String password) {
         return (password.matches("\\w*\\d\\w*"));
     }
@@ -17,7 +17,7 @@ public class PasswordUtils {
         return new StringBuilder(password).reverse().toString();
     }
 
-    @UseCase(id = 49, description = "New password can't equal previously used ones")
+    @UseCase(id = 49, description = "新密民不能等于旧密码")
     public boolean checkForNewPassword(List<String> prevPassword, String password) {
         return !prevPassword.contains(password);
     }

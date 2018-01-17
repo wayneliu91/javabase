@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UseCase {
     int id();
-    String description() default "no description";
+    String description() default "没有描述";
 }

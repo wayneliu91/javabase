@@ -10,16 +10,17 @@ import java.util.List;
  */
 public class UseCaseTracker {
 
-    private static void trackUseCases(List<Integer> useCases, Class<?> cl) {
-        for (Method m : cl.getDeclaredMethods()) {
-            UseCase uc = m.getAnnotation(UseCase.class);
-            if (uc != null) {
-                System.out.println("Found Use Case: " + uc.id() + " " + uc.description());
-                useCases.remove(new Integer(uc.id()));
+    private static void trackUseCases(List<Integer> useCases, Class<?> clazz) {
+        // 遍历每个方法上的注解
+        for (Method method : clazz.getDeclaredMethods()) {
+            UseCase useCase = method.getAnnotation(UseCase.class);
+            if (useCase != null) {
+                System.out.println("发现使用的UseCase注解: " + useCase.id() + " " + useCase.description());
+                useCases.remove(new Integer(useCase.id()));
             }
         }
         for (int i : useCases) {
-            System.out.println("Warning: Missing use Case-" + i);
+            System.out.println("Warning: 丢失UseCase注解-" + i);
         }
     }
 
