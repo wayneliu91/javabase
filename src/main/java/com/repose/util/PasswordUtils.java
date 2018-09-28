@@ -1,4 +1,6 @@
-package com.repose.annotations;
+package com.repose.util;
+
+import com.repose.annotations.UseCase;
 
 import java.util.List;
 

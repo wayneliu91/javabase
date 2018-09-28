@@ -1,0 +1,29 @@
+package com.repose;
+
+import java.sql.Date;
+
+/**
+ * 时间测试
+ * 
+ * @author 刘山禾 2018年07月06日 新建
+ * @since JDK1.7
+ */
+public class TestSqlDate {
+
+    public static void main(String[] args) {
+        // 模拟客户端传来的日期
+        Date date = new Date(System.currentTimeMillis());
+        testDate(date);
+    }
+
+    private static void testDate(Date date) {
+        long currentTimeMillis = System.currentTimeMillis();
+        Date current = new Date(currentTimeMillis);
+        if (date.after(current)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+
+}
