@@ -17,16 +17,21 @@ public class DateUtilsTest {
 
     @Test
     public void test() {
-        testTomorrow(1, 2);
+        long now = System.currentTimeMillis();
+
     }
 
-    private static void testTomorrow(int effectDate, int validityDate) {
+    @Test
+    public void testTomorrow() {
+        int effectDate = 1;
+        int validityDate = 2;
         // 立即生效
-        if (effectDate == 0) {
-            validityDate = validityDate + 1;
-        }
         Date date = new Date();
-        Date truncate = DateUtils.truncate(date, Calendar.DAY_OF_MONTH);
+        Date addDays = DateUtils.addDays(date, -32);
+        Date truncate = DateUtils.truncate(addDays, Calendar.DAY_OF_MONTH);
+        System.out.println(truncate.getTime());
+        System.out.println(FAST_DATE_FORMAT.format(truncate));
+
         Date startTime = DateUtils.addDays(truncate, effectDate);
 
         Date addHours = DateUtils.addHours(startTime, 24 * validityDate);
@@ -35,13 +40,16 @@ public class DateUtilsTest {
         System.out.println(FAST_DATE_FORMAT.format(endTime));
     }
 
-    private static void format(Date date) {
+    @Test
+    public void format() {
+        Date date = new Date();
         FastDateFormat dateInstance = FastDateFormat.getDateInstance(FastDateFormat.MEDIUM);
         String format = dateInstance.format(date);
         System.out.println(format);
     }
 
-    private static void testDateUtil() {
+    @Test
+    public void testDateUtil() {
         Date current = new Date();
         Date round = DateUtils.truncate(current, Calendar.DAY_OF_MONTH);
         Date date = DateUtils.addSeconds(round, -1);
