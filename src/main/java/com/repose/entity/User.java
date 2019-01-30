@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 用户
- * 
+ *
  * @author 刘山禾 2018年08月17日 新建
  * @since JDK1.7
  */
@@ -20,6 +20,14 @@ public class User implements Serializable {
     public User(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     public Integer getId() {

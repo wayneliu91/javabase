@@ -1,10 +1,11 @@
 package com.repose.java.math;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-
 import com.alibaba.fastjson.JSON;
 import com.repose.entity.Order;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  * @author 刘山禾 2018年09月06日 新建
@@ -12,11 +13,21 @@ import com.repose.entity.Order;
  */
 public class TestDecimal {
 
-    public static void main(String[] args) {
-        testSerializable();
+    @Test
+    public void test() {
+        BigDecimal zero = BigDecimal.ZERO;
+        BigDecimal add = zero.add(new BigDecimal(10));
+
+        int i = add.compareTo(BigDecimal.ZERO);
+        if (i > 0) {
+            System.out.println("大于");
+        }
+
+        System.out.println(add.stripTrailingZeros().toPlainString());
     }
 
-    private static void testSerializable() {
+    @Test
+    public void testSerializable() {
         Order order = new Order();
         order.setOrderId("yj123456");
         order.setValue(new BigDecimal(64.993, MathContext.DECIMAL32));
@@ -26,7 +37,8 @@ public class TestDecimal {
         System.out.println(order1.getValue().stripTrailingZeros().toPlainString());
     }
 
-    private static void testCompare() {
+    @Test
+    public void testCompare() {
         BigDecimal b1 = new BigDecimal(10.5, MathContext.DECIMAL32);
         BigDecimal b2 = new BigDecimal(10.04, MathContext.DECIMAL32);
         BigDecimal subtract = b1.subtract(b2);

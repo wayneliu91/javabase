@@ -17,8 +17,10 @@ public class DateUtilsTest {
 
     @Test
     public void test() {
-        long now = System.currentTimeMillis();
-
+        Date truncate = DateUtils.truncate(DateUtils.addDays(new Date(),-180), Calendar.DAY_OF_MONTH);
+        System.out.println(FAST_DATE_FORMAT.format(truncate));
+        Date truncate1 = DateUtils.truncate(DateUtils.addDays(new Date(),-183), Calendar.DAY_OF_MONTH);
+        System.out.println(FAST_DATE_FORMAT.format(truncate1));
     }
 
     @Test

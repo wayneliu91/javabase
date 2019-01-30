@@ -6,7 +6,7 @@ package com.repose;
  */
 public class TestShortUrl {
     public static void main(String[] args) {
-        String key = "wiZgyx";
+        String key = "7Xd6hg";
         int i = Math.abs(key.hashCode()) % 1024;
         System.out.println(i);
     }

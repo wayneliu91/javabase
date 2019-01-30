@@ -9,13 +9,11 @@ import java.util.Random;
 public class Temp {
 
     public static void main(String[] args) {
-        String phone = "8618501234234";
-
-        String hidenPhone = phone.replaceAll("(\\d{5})\\d{4}(\\d{4})", "$1****$2");
-
-        System.out.println(hidenPhone);
-
+        boolean useable = isUseable(3);
+        System.out.println(useable);
     }
+
+
 
     private static void mutiThread() {
         new Thread(() -> System.out.println("1.aaaaa"), "a线程").start();
@@ -33,6 +31,11 @@ public class Temp {
             throw new RuntimeException("区间范围超出福袋容量");
         }
         System.out.println(randNum + x);
+    }
+
+    /** 指定渠道是否可用 */
+    public static boolean isUseable(int type) {
+        return (7 & (1 << (type - 1))) > 0;
     }
 
 }
