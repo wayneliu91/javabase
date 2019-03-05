@@ -48,4 +48,11 @@ public class TestDecimal {
         }
         System.out.println(subtract.stripTrailingZeros().toPlainString());
     }
+
+
+    @Test
+    public void constructor() {
+        BigDecimal a1 = new BigDecimal(String.valueOf(19.99));
+        System.out.println(JSON.toJSONString(a1));
+    }
 }

@@ -27,4 +27,13 @@ public class StringTest {
         String s = "ss 22  bb".replaceAll("\\s*", "");
         System.out.println(s);
     }
+
+    @Test
+    public void StringBuilderTest() {
+        StringBuilder sb = new StringBuilder();
+        System.out.println(sb.toString());
+        if (StringUtils.isBlank(sb)) {
+            System.out.println("空的");
+        }
+    }
 }

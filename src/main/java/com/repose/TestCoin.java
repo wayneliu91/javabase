@@ -113,7 +113,7 @@ public class TestCoin {
         // 随机值
         int randomNumber = max.multiply(new BigDecimal(100)).intValue();
         int coupon = random.nextInt(randomNumber);
-        BigDecimal money = new BigDecimal(coupon).divide(new BigDecimal(100));
+        BigDecimal money = new BigDecimal(coupon).divide(new BigDecimal(100), 2, BigDecimal.ROUND_DOWN);
         int count = money.compareTo(min);
         BigDecimal couponMoney = count <= 0 ? min : money;
         leftCouponPackageNew.setRemainSize(remainSize - 1);

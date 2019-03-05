@@ -4,6 +4,8 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.junit.Test;
 
+import javax.xml.crypto.Data;
+import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,6 +16,21 @@ import java.util.Date;
 public class DateUtilsTest {
 
     private static final FastDateFormat FAST_DATE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
+
+
+    @Test
+    public void truncate() throws NoSuchFieldException, IllegalAccessException {
+        Date date = new Date(1551755768797L);
+        System.out.println(date.getTime());
+
+        Date truncate = DateUtils.truncate(date, Calendar.SECOND);
+
+        Field fastTime = truncate.getClass().getDeclaredField("fastTime");
+        fastTime.setAccessible(true);
+        System.out.println(fastTime.get(truncate));
+
+        System.out.println(truncate.getTime());
+    }
 
     @Test
     public void test() {

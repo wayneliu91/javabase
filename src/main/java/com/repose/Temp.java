@@ -1,5 +1,9 @@
 package com.repose;
 
+import com.repose.enums.TestEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Random;
 
 /**
@@ -7,12 +11,16 @@ import java.util.Random;
  * @since JDK1.7
  */
 public class Temp {
+    private static final Logger LOGGER = LogManager.getLogger(Temp.class);
 
     public static void main(String[] args) {
-        boolean useable = isUseable(3);
-        System.out.println(useable);
+        boolean inTestEnum = TestEnum.A1.isInTestEnum(1);
+        if (inTestEnum) {
+            LOGGER.info("===true===");
+        }else {
+            LOGGER.info("====false====");
+        }
     }
-
 
 
     private static void mutiThread() {
@@ -33,7 +41,9 @@ public class Temp {
         System.out.println(randNum + x);
     }
 
-    /** 指定渠道是否可用 */
+    /**
+     * 指定渠道是否可用
+     */
     public static boolean isUseable(int type) {
         return (7 & (1 << (type - 1))) > 0;
     }
