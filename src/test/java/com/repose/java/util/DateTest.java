@@ -20,6 +20,28 @@ public class DateTest {
     private static final long ONE_HOURS = 1000 * 60 * 60;
 
     @Test
+    public void add() {
+        Date now = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+        calendar.add(Calendar.DATE, 1);
+        Date time = calendar.getTime();
+        System.out.println(time);
+    }
+
+    @Test
+    public void sum() {
+        Date now = new Date();
+        Date endTime = DateUtils.addDays(now, 1);
+
+        long l = endTime.getTime() - System.currentTimeMillis();
+        System.out.println(l);
+
+        long l1 = l / 1000 + (24 * 60 * 60);
+        System.out.println(l1);
+    }
+
+    @Test
     public void getTime() throws ParseException {
         long currentTimeMillis = System.currentTimeMillis();
         Date parse = FORMAT.parse("2018-10-01 23:59:59");

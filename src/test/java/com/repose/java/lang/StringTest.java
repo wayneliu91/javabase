@@ -1,9 +1,12 @@
 package com.repose.java.lang;
 
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,6 +15,19 @@ import java.util.Set;
  */
 public class StringTest {
 
+
+    @Test
+    public void testJson() {
+        List<Integer> temp = Lists.newArrayList(1, 3, 4, 5);
+        System.out.println(JSON.toJSONString(temp));
+    }
+
+    @Test
+    public void subString() {
+        String s = "1234567890";
+        String substring = s.substring(0, 10);
+        System.out.println(substring);
+    }
 
     @Test
     public void testLength() {
