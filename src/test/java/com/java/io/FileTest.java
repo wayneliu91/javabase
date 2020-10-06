@@ -7,11 +7,7 @@ import java.io.File;
 public class FileTest {
 
     @Test
-<<<<<<< HEAD
-    public void reName() {
-=======
     public void rename() {
->>>>>>> 新增File接口测试类：重命名功能
         String path = "/Volumes/Extreme SSD/video/大数据/1-采集&传输/Flume/4.视频";
         File file = new File(path);
         if (file.exists()) {
